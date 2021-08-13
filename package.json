@@ -1,5 +1,10 @@
 {
   "name": "react-components-headlessui",
+  "jest": {
+    "moduleNameMapper": {
+      "^~/(.+)": "<rootDir>/src/$1"
+    }
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
