@@ -1,26 +1,24 @@
 import React from 'react'
-import logo from '~/logo.svg'
-import '~/App.css'
+import DropdownMenu from '~/components/headless/DropdownMenu'
+import MenuItemText from '~/components/headless/DropdownMenu/menuItems/MenuItemText'
+import MenuItemButton from '~/components/headless/DropdownMenu/menuItems/MenuItemButton'
+import MenuItemLink from '~/components/headless/DropdownMenu/menuItems/MenuItemLink'
 
-function App(): JSX.Element {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  )
+const App: React.FC = (): JSX.Element => {
+  const items = [
+    { key: 1, element: <MenuItemText>AAAA</MenuItemText> },
+    { key: 2, element: <MenuItemButton>BBBB</MenuItemButton> },
+    {
+      key: 3,
+      element: (
+        <MenuItemLink to="/" target="_blank">
+          Link
+        </MenuItemLink>
+      ),
+    },
+  ]
+
+  return <DropdownMenu items={items} />
 }
 
 export default App
