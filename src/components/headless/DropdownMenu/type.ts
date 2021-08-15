@@ -1,18 +1,35 @@
 import { Key, ReactNode } from 'react'
 import type { TransitionClassNames } from '~/types/transition'
 
-export type Props = {
-  button: ReactNode
-  items: {
-    key: Key
-    element: ReactNode
-  }[]
+export type Item = {
+  key: Key
+  children: ReactNode
+  elementType: 'button' | 'link' | 'text'
+  to?: string
+  target?: '_blank'
   classNames?: {
-    self?: string
-    button?: string
-    items?: {
-      transition?: TransitionClassNames
-      content?: string
+    base?: string
+    active?: string
+  }
+}
+
+export type Props = {
+  classNames?: {
+    base?: string
+  }
+  button: {
+    children: ReactNode
+    classNames?: {
+      base?: string
     }
   }
+  itemsWrapperTransition?: {
+    classNames?: TransitionClassNames
+  }
+  itemsWrapper?: {
+    classNames?: {
+      base?: string
+    }
+  }
+  items: Item[]
 }

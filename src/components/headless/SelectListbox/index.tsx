@@ -7,10 +7,10 @@ export const Component = <T extends number | string>(
   props: Props<T>
 ): JSX.Element => {
   const selectedLabel = () => {
-    return (
-      props.items.find((item) => item.value === props.selectedValue)
-        ?.children || props.button.children
-    )
+    return props.selectedValue
+      ? props.items.find((item) => item.value === props.selectedValue)
+          ?.children || props.button.children
+      : props.button.children
   }
 
   return (
