@@ -1,40 +1,58 @@
 import React, { useState } from 'react'
 import type { Nullable } from '~/types/common'
-import DropdownMenu from '~/components/headless/DropdownMenu'
-import MenuItemText from '~/components/headless/DropdownMenu/menuItems/MenuItemText'
-import MenuItemButton from '~/components/headless/DropdownMenu/menuItems/MenuItemButton'
-import MenuItemLink from '~/components/headless/DropdownMenu/menuItems/MenuItemLink'
+import DropdownMenu from '~/components/style/DropdownMenu'
+import DropdownItem from '~/components/style/DropdownMenu/DropdownItem'
 import SelectListbox from '~/components/headless/SelectListbox'
 
 const App: React.FC = (): JSX.Element => {
   const dropdownItemClassName = () => {
-    return 'block px-4 py-2 text-sm'
+    return 'w-full block py-2 px-4 text-sm text-left'
   }
   const dropdownItems = [
     {
+      key: 4,
+      element: (
+        <DropdownItem
+          elementType="button"
+          classNames={{ base: dropdownItemClassName(), active: 'bg-blue-100' }}
+        >
+          Button
+        </DropdownItem>
+      ),
+    },
+    {
       key: 1,
       element: (
-        <MenuItemText className={dropdownItemClassName()}>AAAA</MenuItemText>
+        <DropdownItem
+          elementType="text"
+          classNames={{ base: dropdownItemClassName() }}
+        >
+          Text
+        </DropdownItem>
       ),
     },
     {
       key: 2,
       element: (
-        <MenuItemButton className={dropdownItemClassName()}>
-          BBBB
-        </MenuItemButton>
+        <DropdownItem
+          elementType="button"
+          classNames={{ base: dropdownItemClassName(), active: 'bg-blue-100' }}
+        >
+          Button
+        </DropdownItem>
       ),
     },
     {
       key: 3,
       element: (
-        <MenuItemLink
+        <DropdownItem
+          elementType="link"
           to="/"
           target="_blank"
-          className={dropdownItemClassName()}
+          classNames={{ base: dropdownItemClassName(), active: 'bg-blue-100' }}
         >
           Link
-        </MenuItemLink>
+        </DropdownItem>
       ),
     },
   ]
@@ -63,31 +81,22 @@ const App: React.FC = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<Nullable<number>>(null)
 
   return (
-    <div className="gap-4 flex flex-col">
-      <DropdownMenu
-        items={dropdownItems}
-        classNames={{
-          button:
-            'w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500',
-          items: {
-            transition: {
-              enter: 'transition ease-out duration-100',
-              enterFrom: 'transform opacity-0 scale-95',
-              enterTo: 'transform opacity-100 scale-100',
-              leave: 'transition ease-in duration-75',
-              leaveFrom: 'transform opacity-100 scale-100',
-              leaveTo: 'transform opacity-0 scale-95',
-            },
-            content:
-              'origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none',
-          },
-        }}
-      />
+    <div className="h-[2000px] gap-4 flex flex-col">
+      <DropdownMenu button={'Dropdown'} items={dropdownItems} />
       <SelectListbox
         selectedValue={selectedValue}
         defaultLabel="選択してください"
         items={selectItems}
         handleChange={setSelectedValue}
+        classNames={{
+          self: '',
+          item: {
+            base: 'transition-colors duration-150',
+            selected: 'text-blue-800',
+            active: 'bg-blue-100',
+            disabled: 'bg-gray-100 opacity-50',
+          },
+        }}
       />
     </div>
   )

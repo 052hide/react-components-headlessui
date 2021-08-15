@@ -4,28 +4,17 @@ import { classNames } from '~/helpers/css'
 import { Props } from './type'
 
 export const Component: React.FC<Props> = (props) => {
-  const targetAttributes =
-    props.target === '_blank'
-      ? {
-          target: '_blank',
-          rel: 'noreferrer',
-        }
-      : {}
-
   return (
     <Menu.Item>
       {({ active }) => (
-        <a
-          href={props.to}
-          {...targetAttributes}
+        <button
           className={classNames([
-            'block w-full text-left',
-            active ? 'bg-gray-100' : '',
-            props.className || '',
+            props.classNames?.base || 'block w-full text-left',
+            active ? props.classNames?.active || '' : '',
           ])}
         >
           {props.children}
-        </a>
+        </button>
       )}
     </Menu.Item>
   )

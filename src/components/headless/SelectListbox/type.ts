@@ -17,6 +17,12 @@ export type Props<T extends number | string> = {
       transition?: TransitionClassNames
       content?: string
     }
+    item?: {
+      base?: string
+      selected?: string
+      active?: string
+      disabled?: string
+    }
   }
   handleChange: (value: T | null) => void
 }

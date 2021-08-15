@@ -9,7 +9,7 @@ module.exports = {
     '@storybook/preset-create-react-app',
   ],
   webpackFinal: async (config) => {
-    config.resolve.alias['~'] = path.resolve(__dirname, '../src/');
-    return config;
+    config.resolve.alias['~'] = path.resolve(__dirname, '../src/')
+    return config
   },
 }
