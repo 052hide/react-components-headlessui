@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { classNames } from '~/helpers/css'
 import { Props } from './type'
 import MenuButton from './MenuButton'
 
@@ -8,19 +7,18 @@ export const Component: React.VFC<Props> = (props) => {
   return (
     <Menu
       as="div"
-      className={classNames([
-        'relative inline-block',
-        props.classNames?.self || '',
-      ])}
+      className={props.classNames?.self || 'relative inline-block'}
     >
-      <MenuButton className={props.classNames?.button}>Button</MenuButton>
+      <MenuButton className={props.classNames?.button}>
+        {props.button}
+      </MenuButton>
 
       <Transition as={Fragment} {...props.classNames?.items?.transition}>
         <Menu.Items
-          className={classNames([
-            'absolute mt-2 left-0 w-full bg-white focus:outline-none',
-            props.classNames?.items?.content || '',
-          ])}
+          className={
+            props.classNames?.items?.content ||
+            'absolute z-dropdownOption left-0 mt-2 w-full bg-white focus:outline-none'
+          }
         >
           {props.items.map((item) => (
             <Fragment key={item.key}>{item.element}</Fragment>

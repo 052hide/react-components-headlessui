@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
-import { classNames } from '~/helpers/css'
 import { Props } from './type'
+import SelectOption from './SelectOption'
 
 export const Component = <T extends number | string>(
   props: Props<T>
@@ -18,31 +18,32 @@ export const Component = <T extends number | string>(
       as="div"
       value={props.selectedValue}
       onChange={props.handleChange}
-      className={classNames([
-        'relative inline-block',
-        props.classNames?.self || '',
-      ])}
+      className={props.classNames?.self || 'relative inline-block'}
     >
-      <Listbox.Button
-        className={classNames(['text-left', props.classNames?.button || ''])}
-      >
+      <Listbox.Button className={props.classNames?.button || 'text-left'}>
         {selectedLabel()}
       </Listbox.Button>
       <Transition as={Fragment} {...props.classNames?.items?.transition}>
         <Listbox.Options
-          className={classNames([
-            'absolute mt-2 left-0 min-w-[10rem] bg-white focus:outline-none',
-            props.classNames?.items?.content || '',
-          ])}
+          className={
+            props.classNames?.items?.content ||
+            'absolute z-dropdownOption left-0  mt-2 min-w-[10rem] bg-white focus:outline-none'
+          }
         >
           {props.items.map((item) => (
-            <Listbox.Option
+            <SelectOption
               key={item.key}
               value={item.value}
               disabled={item.disabled}
+              classNames={{
+                base: props.classNames?.item?.base,
+                selected: props.classNames?.item?.selected,
+                active: props.classNames?.item?.active,
+                disabled: props.classNames?.item?.disabled,
+              }}
             >
               {item.label}
-            </Listbox.Option>
+            </SelectOption>
           ))}
         </Listbox.Options>
       </Transition>
