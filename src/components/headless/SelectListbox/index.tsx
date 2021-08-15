@@ -8,8 +8,8 @@ export const Component = <T extends number | string>(
 ): JSX.Element => {
   const selectedLabel = () => {
     return (
-      props.items.find((item) => item.value === props.selectedValue)?.label ||
-      props.defaultLabel
+      props.items.find((item) => item.value === props.selectedValue)
+        ?.children || props.defaultLabel
     )
   }
 
@@ -42,7 +42,7 @@ export const Component = <T extends number | string>(
                 disabled: props.classNames?.item?.disabled,
               }}
             >
-              {item.label}
+              {item.children}
             </SelectOption>
           ))}
         </Listbox.Options>

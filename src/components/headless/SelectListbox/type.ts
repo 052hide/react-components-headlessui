@@ -7,8 +7,8 @@ export type Props<T extends number | string> = {
   items: {
     key: Key
     value: T
-    label: ReactNode
     disabled: boolean
+    children: ReactNode
   }[]
   classNames?: {
     self?: string

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import type { Nullable } from '~/types/common'
 import DropdownMenu from '~/components/style/DropdownMenu'
 import DropdownItem from '~/components/style/DropdownMenu/DropdownItem'
-import SelectListbox from '~/components/headless/SelectListbox'
+import SelectListbox from '~/components/style/SelectListbox'
 
 const App: React.FC = (): JSX.Element => {
   const dropdownItemClassName = () => {
@@ -61,19 +61,19 @@ const App: React.FC = (): JSX.Element => {
     {
       key: 1,
       value: 1,
-      label: 'Label 1',
+      children: 'Label 1',
       disabled: false,
     },
     {
       key: 2,
       value: 2,
-      label: 'Label 2',
+      children: 'Label 2',
       disabled: true,
     },
     {
       key: 3,
       value: 3,
-      label: 'Label 3',
+      children: 'Label 3',
       disabled: false,
     },
   ]
@@ -88,15 +88,6 @@ const App: React.FC = (): JSX.Element => {
         defaultLabel="選択してください"
         items={selectItems}
         handleChange={setSelectedValue}
-        classNames={{
-          self: '',
-          item: {
-            base: 'transition-colors duration-150',
-            selected: 'text-blue-800',
-            active: 'bg-blue-100',
-            disabled: 'bg-gray-100 opacity-50',
-          },
-        }}
       />
     </div>
   )
