@@ -3,7 +3,7 @@ import { Menu } from '@headlessui/react'
 import { classNames } from '~/helpers/css'
 import { Props } from './type'
 
-export const MenuItemText: React.FC<Props> = (props) => {
+export const Component: React.FC<Props> = (props) => {
   const targetAttributes =
     props.target === '_blank'
       ? {
@@ -21,6 +21,7 @@ export const MenuItemText: React.FC<Props> = (props) => {
           className={classNames([
             'block w-full text-left',
             active ? 'bg-gray-100' : '',
+            props.className || '',
           ])}
         >
           {props.children}
@@ -30,4 +31,4 @@ export const MenuItemText: React.FC<Props> = (props) => {
   )
 }
 
-export default MenuItemText
+export default Component

@@ -1,4 +1,5 @@
 import { Key, ReactNode } from 'react'
+import type { TransitionClassNames } from '~/types/transition'
 
 export type Props<T extends number | string> = {
   selectedValue: T | null
@@ -9,5 +10,13 @@ export type Props<T extends number | string> = {
     label: ReactNode
     disabled: boolean
   }[]
+  classNames?: {
+    self?: string
+    button?: string
+    items?: {
+      transition?: TransitionClassNames
+      content?: string
+    }
+  }
   handleChange: (value: T | null) => void
 }
