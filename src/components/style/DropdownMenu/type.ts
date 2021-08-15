@@ -1,9 +1,14 @@
-import { Key, ReactNode } from 'react'
+import { OmitClassNames } from '~/types/common'
+import type {
+  Props as DropdownMenuProps,
+  Item,
+} from '~/components/headless/DropdownMenu/type'
 
 export type Props = {
-  button: ReactNode
-  items: {
-    key: Key
-    element: ReactNode
-  }[]
+  button: OmitClassNames<DropdownMenuProps['button']>
+  itemsWrapperTransition?: OmitClassNames<
+    DropdownMenuProps['itemsWrapperTransition']
+  >
+  itemsWrapper?: OmitClassNames<DropdownMenuProps['itemsWrapper']>
+  items: OmitClassNames<Item>[]
 }
