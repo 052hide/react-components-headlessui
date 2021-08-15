@@ -1,23 +1,27 @@
 import React, { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
+import { classNames } from '~/helpers/css'
 import { Props } from './type'
 import MenuButton from './MenuButton'
 
-export const DropdownMenu: React.VFC<Props> = (props) => {
+export const Component: React.VFC<Props> = (props) => {
   return (
-    <Menu as="div" className="relative inline-block">
-      <MenuButton>Button</MenuButton>
+    <Menu
+      as="div"
+      className={classNames([
+        'relative inline-block',
+        props.classNames?.self || '',
+      ])}
+    >
+      <MenuButton className={props.classNames?.button}>Button</MenuButton>
 
-      <Transition
-        as={Fragment}
-        // enter="transition ease-out duration-100"
-        // enterFrom="transform opacity-0 scale-95"
-        // enterTo="transform opacity-100 scale-100"
-        // leave="transition ease-in duration-75"
-        // leaveFrom="transform opacity-100 scale-100"
-        // leaveTo="transform opacity-0 scale-95"
-      >
-        <Menu.Items className="absolute mt-2 left-0 min-w-[10rem] bg-white focus:outline-none">
+      <Transition as={Fragment} {...props.classNames?.items?.transition}>
+        <Menu.Items
+          className={classNames([
+            'absolute mt-2 left-0 w-full bg-white focus:outline-none',
+            props.classNames?.items?.content || '',
+          ])}
+        >
           {props.items.map((item) => (
             <Fragment key={item.key}>{item.element}</Fragment>
           ))}
@@ -27,4 +31,4 @@ export const DropdownMenu: React.VFC<Props> = (props) => {
   )
 }
 
-export default DropdownMenu
+export default Component
