@@ -13,7 +13,7 @@ export const Component = <T extends number | string>(
       className={({ selected, active, disabled }) =>
         classNames([
           props.classNames?.base || '',
-          selected ? props.classNames?.selected || '' : '',
+          selected && props.value !== null ? props.classNames?.selected || '' : '',
           active ? props.classNames?.active || '' : '',
           disabled ? props.classNames?.disabled || '' : '',
         ])

@@ -8,8 +8,8 @@ export const Component = <T extends number | string>(
 ): JSX.Element => {
   const selectedLabel = () => {
     return (
-      props.items.find((item) => item.value === props.selectedValue)?.label ||
-      props.defaultLabel
+      props.items.find((item) => item.value === props.selectedValue)
+        ?.children || props.button.children
     )
   }
 
@@ -18,15 +18,15 @@ export const Component = <T extends number | string>(
       as="div"
       value={props.selectedValue}
       onChange={props.handleChange}
-      className={props.classNames?.self || 'relative inline-block'}
+      className={props.classNames?.base || 'relative inline-block'}
     >
-      <Listbox.Button className={props.classNames?.button || 'text-left'}>
+      <Listbox.Button className={props.button.classNames?.base || 'text-left'}>
         {selectedLabel()}
       </Listbox.Button>
-      <Transition as={Fragment} {...props.classNames?.items?.transition}>
+      <Transition as={Fragment} {...props.itemsWrapperTransition?.classNames}>
         <Listbox.Options
           className={
-            props.classNames?.items?.content ||
+            props.itemsWrapper?.classNames?.base ||
             'absolute z-dropdownOption left-0  mt-2 min-w-[10rem] bg-white focus:outline-none'
           }
         >
@@ -35,14 +35,9 @@ export const Component = <T extends number | string>(
               key={item.key}
               value={item.value}
               disabled={item.disabled}
-              classNames={{
-                base: props.classNames?.item?.base,
-                selected: props.classNames?.item?.selected,
-                active: props.classNames?.item?.active,
-                disabled: props.classNames?.item?.disabled,
-              }}
+              classNames={item.classNames}
             >
-              {item.label}
+              {item.children}
             </SelectOption>
           ))}
         </Listbox.Options>
