@@ -1,5 +1,5 @@
 export type Props<T extends number | string> = {
-  value: T
+  value: T | null
   disabled: boolean
   classNames?: {
     base?: string
