@@ -47,4 +47,14 @@ const Component = (props: PropsWithChildren<Props>): JSX.Element => {
   )
 }
 
+Component.defaultProps = {
+  htmlType: 'button',
+  disabled: false,
+  clickIntervalMillisecond: 200,
+  block: false,
+  loading: false,
+  theme: 'primary',
+  size: 'base',
+}
+
 export default Component

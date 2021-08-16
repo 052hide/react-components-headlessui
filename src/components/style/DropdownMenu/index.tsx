@@ -44,4 +44,9 @@ export const Component = (props: PropsWithChildren<Props>): JSX.Element => {
   )
 }
 
+Component.defaultProps = {
+  items: [],
+  block: false,
+}
+
 export default Component

@@ -46,4 +46,9 @@ export const Component = <T extends number | string>(
   )
 }
 
+Component.defaultProps = {
+  selectedValue: null,
+  items: [],
+}
+
 export default Component

@@ -46,4 +46,10 @@ const Component = <T extends number | string>(props: Props<T>): JSX.Element => {
   )
 }
 
+Component.defaultProps = {
+  selectedValue: null,
+  items: [],
+  block: false,
+}
+
 export default Component

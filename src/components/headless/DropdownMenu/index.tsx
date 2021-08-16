@@ -61,4 +61,8 @@ export const Component = (props: Props): JSX.Element => {
   )
 }
 
+Component.defaultProps = {
+  items: [],
+}
+
 export default Component

@@ -27,4 +27,10 @@ export const Component = (props: PropsWithChildren<Props>): JSX.Element => {
   )
 }
 
+Component.defaultProps = {
+  htmlType: 'button',
+  disabled: false,
+  clickIntervalMillisecond: 200,
+}
+
 export default Component
