@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import type { Nullable } from '~/types/common'
 import type { Props as DropdownMenuProps } from '~/components/style/DropdownMenu/type'
 import type { Props as SelectListboxProps } from '~/components/style/SelectListbox/type'
+import Button from '~/components/style/Button'
 import DropdownMenu from '~/components/style/DropdownMenu'
 import SelectListbox from '~/components/style/SelectListbox'
 
@@ -55,22 +56,44 @@ const selectItems: SelectListboxProps<number>['items'] = [
 const App: React.FC = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<Nullable<number>>(null)
 
+  const handleClick = () => {
+    console.log('handleClick')
+  }
+
   return (
     <div className="h-[2000px] gap-4 flex flex-col">
-      <DropdownMenu
-        button={{
-          children: 'Dropdown',
-        }}
-        items={dropdownItems}
-      />
-      <SelectListbox
-        selectedValue={selectedValue}
-        handleChange={setSelectedValue}
-        button={{
-          children: 'Select',
-        }}
-        items={selectItems}
-      />
+      <div>
+        <Button
+          htmlType="button"
+          disabled={false}
+          clickIntervalMillisecond={1000}
+          block={true}
+          loading={true}
+          theme="primary"
+          size="base"
+          handleClick={handleClick}
+        >
+          Button
+        </Button>
+      </div>
+      <div>
+        <DropdownMenu
+          button={{
+            children: 'Dropdown',
+          }}
+          items={dropdownItems}
+        />
+      </div>
+      <div>
+        <SelectListbox
+          selectedValue={selectedValue}
+          handleChange={setSelectedValue}
+          button={{
+            children: 'Select',
+          }}
+          items={selectItems}
+        />
+      </div>
     </div>
   )
 }
