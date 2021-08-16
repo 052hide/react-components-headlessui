@@ -6,8 +6,11 @@ export default {
   title: 'style/DropdownMenu',
   component: DropdownMenu,
   argTypes: {
-    button: { control: 'object' },
-    items: { control: 'object' },
+    button: {
+      type: 'object',
+    },
+    items: { type: 'object' },
+    block: { type: 'boolean' },
   },
 } as ComponentMeta<typeof DropdownMenu>
 
@@ -39,4 +42,5 @@ Default.args = {
       elementType: 'text',
     },
   ],
+  block: false,
 }

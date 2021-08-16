@@ -11,4 +11,5 @@ export type Props = {
   >
   itemsWrapper?: OmitClassNames<DropdownMenuProps['itemsWrapper']>
   items: OmitClassNames<Item>[]
+  block: boolean
 }

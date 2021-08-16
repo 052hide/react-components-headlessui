@@ -13,4 +13,5 @@ export type Props<T extends number | string> = {
   >
   itemsWrapper?: OmitClassNames<SelectListboxProps<T>['itemsWrapper']>
   items: OmitClassNames<Item>[]
+  block: boolean
 }

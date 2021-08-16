@@ -82,6 +82,7 @@ const App: React.FC = (): JSX.Element => {
             children: 'Dropdown',
           }}
           items={dropdownItems}
+          block={false}
         />
       </div>
       <div>
@@ -92,6 +93,7 @@ const App: React.FC = (): JSX.Element => {
             children: 'Select',
           }}
           items={selectItems}
+          block={false}
         />
       </div>
     </div>
