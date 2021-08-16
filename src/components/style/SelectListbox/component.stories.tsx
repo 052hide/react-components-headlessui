@@ -6,8 +6,11 @@ export default {
   title: 'style/SelectListbox',
   component: SelectListbox,
   argTypes: {
-    button: { control: 'object' },
-    items: { control: 'object' },
+    button: {
+      type: 'object',
+    },
+    items: { type: 'object' },
+    block: { type: 'boolean' },
   },
 } as ComponentMeta<typeof SelectListbox>
 
@@ -48,4 +51,5 @@ Default.args = {
       disabled: false,
     },
   ],
+  block: false,
 }

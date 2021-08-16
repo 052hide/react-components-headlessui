@@ -7,7 +7,9 @@ const Component = <T extends number | string>(props: Props<T>): JSX.Element => {
     <SelectListbox
       selectedValue={props.selectedValue}
       classNames={{
-        base: '',
+        base: props.block
+          ? 'flex flex-row justify-center items-center w-full'
+          : '',
       }}
       button={{
         ...props.button,

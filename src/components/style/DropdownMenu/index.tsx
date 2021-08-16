@@ -6,7 +6,9 @@ const Component = (props: Props): JSX.Element => {
   return (
     <DropdownMenu
       classNames={{
-        base: '',
+        base: props.block
+          ? 'flex flex-row justify-center items-center w-full'
+          : '',
       }}
       button={{
         ...props.button,
