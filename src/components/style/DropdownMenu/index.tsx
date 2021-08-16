@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import DropdownMenu from '~/components/headless/DropdownMenu'
 import { Props } from './type'
 
-const Component = (props: Props): JSX.Element => {
+export const Component = (props: PropsWithChildren<Props>): JSX.Element => {
   return (
     <DropdownMenu
       classNames={{
@@ -42,6 +42,11 @@ const Component = (props: Props): JSX.Element => {
       }))}
     />
   )
+}
+
+Component.defaultProps = {
+  items: [],
+  block: false,
 }
 
 export default Component

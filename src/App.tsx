@@ -63,18 +63,7 @@ const App: React.FC = (): JSX.Element => {
   return (
     <div className="h-[2000px] gap-4 flex flex-col">
       <div>
-        <Button
-          htmlType="button"
-          disabled={false}
-          clickIntervalMillisecond={1000}
-          block={true}
-          loading={true}
-          theme="primary"
-          size="base"
-          handleClick={handleClick}
-        >
-          Button
-        </Button>
+        <Button handleClick={handleClick}>Button</Button>
       </div>
       <div>
         <DropdownMenu
@@ -82,7 +71,6 @@ const App: React.FC = (): JSX.Element => {
             children: 'Dropdown',
           }}
           items={dropdownItems}
-          block={false}
         />
       </div>
       <div>
@@ -93,7 +81,6 @@ const App: React.FC = (): JSX.Element => {
             children: 'Select',
           }}
           items={selectItems}
-          block={false}
         />
       </div>
     </div>

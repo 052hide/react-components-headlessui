@@ -26,4 +26,8 @@ export const Component = <T extends number | string>(
   )
 }
 
+Component.defaultProps = {
+  disabled: false,
+}
+
 export default Component

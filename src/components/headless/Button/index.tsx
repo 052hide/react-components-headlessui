@@ -1,7 +1,7 @@
-import React, { MouseEvent, useState } from 'react'
+import React, { PropsWithChildren, MouseEvent, useState } from 'react'
 import { Props } from './type'
 
-export const Component: React.FC<Props> = (props): JSX.Element => {
+export const Component = (props: PropsWithChildren<Props>): JSX.Element => {
   const [waiting, setWaiting] = useState<boolean>(false)
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -25,6 +25,12 @@ export const Component: React.FC<Props> = (props): JSX.Element => {
       {props.children}
     </button>
   )
+}
+
+Component.defaultProps = {
+  htmlType: 'button',
+  disabled: false,
+  clickIntervalMillisecond: 200,
 }
 
 export default Component

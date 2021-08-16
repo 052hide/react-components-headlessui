@@ -6,7 +6,7 @@ import DropdownMenuItemButton from './dropdownMenuItems/DropdownMenuItemButton'
 import DropdownMenuItemLink from './dropdownMenuItems/DropdownMenuItemLink'
 import DropdownMenuItemText from './dropdownMenuItems/DropdownMenuItemText'
 
-export const Component: React.VFC<Props> = (props) => {
+export const Component = (props: Props): JSX.Element => {
   return (
     <Menu
       as="div"
@@ -59,6 +59,10 @@ export const Component: React.VFC<Props> = (props) => {
       </Transition>
     </Menu>
   )
+}
+
+Component.defaultProps = {
+  items: [],
 }
 
 export default Component
