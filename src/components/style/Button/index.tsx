@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import { classNames } from '~/helpers/css'
 import Button from '~/components/headless/Button'
 import { Props } from './type'
@@ -9,7 +9,7 @@ import {
   disabledClassNames,
 } from './helper'
 
-const Component: React.FC<Props> = (props) => {
+const Component = (props: PropsWithChildren<Props>): JSX.Element => {
   return (
     <Button
       {...props}
