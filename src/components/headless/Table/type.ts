@@ -3,16 +3,15 @@ import { RequireOne } from '~/types/common'
 
 type ColumnValue<
   V extends string | number | boolean = string | number | boolean,
-  F extends 'date' | 'datetime' | 'array' = 'date' | 'datetime' | 'array'
 > = RequireOne<{
   children?: ReactNode
-  value?: F extends 'date' | 'datetime' ? number : V
+  value?: V
 }>
 
-type Column<
+export type Column<
   V extends string | number | boolean = string | number | boolean,
   F extends 'date' | 'datetime' | 'array' = 'date' | 'datetime' | 'array'
-> = ColumnValue<V, F> & {
+> = ColumnValue<V> & {
   format?: F
 }
 
