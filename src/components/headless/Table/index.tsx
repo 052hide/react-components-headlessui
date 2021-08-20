@@ -45,7 +45,9 @@ export const Component = (props: Props): JSX.Element => {
                       }
                     }
                   >
-                    {props.headerColumns[configColumn.key]}
+                    {props.headerColumns[configColumn.key].children
+                      ? props.headerColumns[configColumn.key].children
+                      : props.headerColumns[configColumn.key].value}
                   </Column>
                 ))}
               </Row>
@@ -64,7 +66,9 @@ export const Component = (props: Props): JSX.Element => {
                         }
                       }
                     >
-                      {row.columns[configColumn.key]}
+                      {row.columns[configColumn.key].children
+                        ? row.columns[configColumn.key].children
+                        : row.columns[configColumn.key].value}
                     </Column>
                   ))}
                 </Row>

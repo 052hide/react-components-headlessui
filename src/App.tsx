@@ -46,16 +46,18 @@ const configColumns = (): TableProps['configColumns'] => {
 
 const headerColumns = (): TableProps['headerColumns'] => {
   return {
-    col_0: <p>Column 0</p>,
-    col_1: <p>Column 1</p>,
-    col_2: <p>Column 2</p>,
-    col_3: <p>Column 3</p>,
-    col_4: <p>Column 4</p>,
-    col_5: <p>Column 5</p>,
-    col_6: <p>Column 6</p>,
-    col_7: <p>Column 7</p>,
-    col_8: <p>Column 8</p>,
-    col_9: <p>Column 9</p>,
+    col_0: { value: 'Column 0' },
+    col_1: { value: 'Column 1' },
+    col_2: { value: 'Column 2' },
+    col_3: { value: 'Column 3' },
+    col_4: { value: 'Column 4' },
+    col_5: { value: 'Column 5' },
+    col_6: { value: 'Column 6' },
+    col_7: { value: 'Column 7' },
+    col_8: { value: 'Column 8' },
+    col_9: {
+      children: <p className="p-x border border-solid border-gray-300">Icon</p>,
+    },
   }
 }
 
@@ -63,20 +65,22 @@ const rows = (): TableProps['rows'] => {
   const row = (index: number) => ({
     key: `row_${index}`,
     columns: {
-      col_0: <p>Row {index} Column 0</p>,
-      col_1: <p>Row {index} Column 1</p>,
-      col_2: <p>Row {index} Column 2</p>,
-      col_3: <p>Row {index} Column 3</p>,
-      col_4: <p>Row {index} Column 4</p>,
-      col_5: <p>Row {index} Column 5</p>,
-      col_6: <p>Row {index} Column 6</p>,
-      col_7: <p>Row {index} Column 7</p>,
-      col_8: <p>Row {index} Column 8</p>,
-      col_9: (
-        <button className="p-2 border border-solid border-gray-300">
-          Row {index} Action
-        </button>
-      ),
+      col_0: { value: `Row ${index} Column 0` },
+      col_1: { value: `Row ${index} Column 1` },
+      col_2: { value: `Row ${index} Column 2` },
+      col_3: { value: `Row ${index} Column 3` },
+      col_4: { value: `Row ${index} Column 4` },
+      col_5: { value: `Row ${index} Column 5` },
+      col_6: { value: `Row ${index} Column 6` },
+      col_7: { value: `Row ${index} Column 7` },
+      col_8: { value: `Row ${index} Column 8` },
+      col_9: {
+        children: (
+          <button className="p-2 border border-solid border-gray-300">
+            Row {index} Action
+          </button>
+        ),
+      },
     },
   })
   return [...Array(10)].map((_, i) => row(i))
