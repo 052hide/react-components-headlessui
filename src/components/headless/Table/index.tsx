@@ -1,6 +1,6 @@
 import React from 'react'
-import Row from '../Row'
-import Column from '../Column'
+import Row from './Row'
+import Column from './Column'
 import { Props } from './type'
 
 const zIndexClassNames = {
@@ -53,9 +53,20 @@ export const Component = (props: Props): JSX.Element => {
             <tbody>
               {props.rows.map((row) => (
                 <Row key={row.key} dataRowKey={row.key}>
-                  {props.configColumns.map(
-                    (configColumn) => row.columns[configColumn.key]
-                  )}
+                  {props.configColumns.map((configColumn) => (
+                    <Column
+                      key={configColumn.key}
+                      dataColKey={configColumn.key}
+                      fixed={
+                        configColumn.fixed && {
+                          position: configColumn.fixed.position,
+                          margin: configColumn.fixed.margin,
+                        }
+                      }
+                    >
+                      {row.columns[configColumn.key]}
+                    </Column>
+                  ))}
                 </Row>
               ))}
             </tbody>
