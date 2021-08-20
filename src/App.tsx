@@ -5,14 +5,13 @@ import type { Props as SelectListboxProps } from '~/components/style/SelectListb
 import Button from '~/components/style/Button'
 import DropdownMenu from '~/components/style/DropdownMenu'
 import SelectListbox from '~/components/style/SelectListbox'
-import FixedColumnsHeaderTable from '~/components/headless/tables/FixedColumnsHeaderTable'
-import Column from '~/components/headless/tables/Column'
-import { Props as TableProps } from '~/components/headless/tables/FixedColumnsHeaderTable/type'
+import Table from '~/components/headless/Table'
+import { Props as TableProps, Row } from '~/components/headless/Table/type'
 
 const configColumns = (): TableProps['configColumns'] => {
   return [
     {
-      key: '1',
+      key: 'col_0',
       width: 100,
       fixed: {
         position: 'left',
@@ -20,22 +19,22 @@ const configColumns = (): TableProps['configColumns'] => {
       },
     },
     {
-      key: '2',
+      key: 'col_1',
       width: 100,
       fixed: {
         position: 'left',
         margin: 100,
       },
     },
-    { key: '3', width: 150 },
-    { key: '4', width: 150 },
-    { key: '5', width: 150 },
-    { key: '6', width: 150 },
-    { key: '7', width: 150 },
-    { key: '8', width: 150 },
-    { key: '9', width: 150 },
+    { key: 'col_2', width: 150 },
+    { key: 'col_3', width: 150 },
+    { key: 'col_4', width: 150 },
+    { key: 'col_5', width: 150 },
+    { key: 'col_6', width: 150 },
+    { key: 'col_7', width: 150 },
+    { key: 'col_8', width: 150 },
     {
-      key: '10',
+      key: 'col_9',
       width: 150,
       fixed: {
         position: 'right',
@@ -47,139 +46,46 @@ const configColumns = (): TableProps['configColumns'] => {
 
 const headerColumns = (): TableProps['headerColumns'] => {
   return {
-    '1': (
-      <Column
-        key="1"
-        dataColKey="1"
-        isHeader={true}
-        fixed={{ position: 'left', margin: 0 }}
-      >
-        Column 1
-      </Column>
-    ),
-    '2': (
-      <Column
-        key="2"
-        dataColKey="2"
-        isHeader={true}
-        fixed={{ position: 'left', margin: 100 }}
-      >
-        Column 2
-      </Column>
-    ),
-    '3': (
-      <Column key="3" dataColKey="3" isHeader={true}>
-        Column 3
-      </Column>
-    ),
-    '4': (
-      <Column key="4" dataColKey="4" isHeader={true}>
-        Column 4
-      </Column>
-    ),
-    '5': (
-      <Column key="5" dataColKey="5" isHeader={true}>
-        Column 5
-      </Column>
-    ),
-    '6': (
-      <Column key="6" dataColKey="6" isHeader={true}>
-        Column 6
-      </Column>
-    ),
-    '7': (
-      <Column key="7" dataColKey="7" isHeader={true}>
-        Column 7
-      </Column>
-    ),
-    '8': (
-      <Column key="8" dataColKey="8" isHeader={true}>
-        Column 8
-      </Column>
-    ),
-    '9': (
-      <Column key="9" dataColKey="9" isHeader={true}>
-        Column 9
-      </Column>
-    ),
-    '10': (
-      <Column
-        key="name"
-        dataColKey="name"
-        isHeader={true}
-        fixed={{ position: 'right', margin: 0 }}
-      >
-        Column 10
-      </Column>
-    ),
+    col_0: { value: 'Column 0' },
+    col_1: { value: 'Column 1' },
+    col_2: { value: 'Column 2' },
+    col_3: { value: 'Column 3' },
+    col_4: { value: 'Date' },
+    col_5: { value: 'DateTIME' },
+    col_6: { value: 'Column 6' },
+    col_7: { value: 'Column 7' },
+    col_8: { value: 'Column 8' },
+    col_9: {
+      children: (
+        <p className="p-x border border-solid border-gray-300">Action</p>
+      ),
+    },
   }
 }
 
 const rows = (): TableProps['rows'] => {
-  const row = {
-    key: '0',
+  const row = (index: number): Row => ({
+    key: `row_${index}`,
     columns: {
-      '1': (
-        <Column key="1" dataColKey="1" fixed={{ position: 'left', margin: 0 }}>
-          Edrward 0
-        </Column>
-      ),
-      '2': (
-        <Column
-          key="2"
-          dataColKey="2"
-          fixed={{ position: 'left', margin: 100 }}
-        >
-          32
-        </Column>
-      ),
-      '3': (
-        <Column key="3" dataColKey="3">
-          Column 3
-        </Column>
-      ),
-      '4': (
-        <Column key="4" dataColKey="4">
-          Column 4
-        </Column>
-      ),
-      '5': (
-        <Column key="5" dataColKey="5">
-          Column 5
-        </Column>
-      ),
-      '6': (
-        <Column key="6" dataColKey="6">
-          Column 6
-        </Column>
-      ),
-      '7': (
-        <Column key="7" dataColKey="7">
-          Column 7
-        </Column>
-      ),
-      '8': (
-        <Column key="8" dataColKey="8">
-          Column 8
-        </Column>
-      ),
-      '9': (
-        <Column key="9" dataColKey="9">
-          Column 9
-        </Column>
-      ),
-      '10': (
-        <Column
-          key="10"
-          dataColKey="10"
-          fixed={{ position: 'right', margin: 0 }}
-        >
-          <a>action</a>
-        </Column>
-      ),
+      col_0: { value: `Row ${index} Column 0` },
+      col_1: { value: `Row ${index} Column 1` },
+      col_2: { value: `Row ${index} Column 2` },
+      col_3: { value: `Row ${index} Column 3` },
+      col_4: { value: 1609471845, format: 'date' },
+      col_5: { value: 1609471845, format: 'datetime' },
+      col_6: { value: `Row ${index} Column 6` },
+      col_7: { value: `Row ${index} Column 7` },
+      col_8: { value: `Row ${index} Column 8` },
+      col_9: {
+        children: (
+          <button className="p-2 border border-solid border-gray-300">
+            Row {index} Action
+          </button>
+        ),
+      },
     },
-  }
-  return [...Array(10)].map(() => row)
+  })
+  return [...Array(10)].map((_, i) => row(i))
 }
 
 const dropdownItems: DropdownMenuProps['items'] = [
@@ -260,7 +166,7 @@ const App: React.FC = (): JSX.Element => {
         />
       </div>
       <div className="w-[800px] h-[100px] overflow-x-auto">
-        <FixedColumnsHeaderTable
+        <Table
           configColumns={configColumns()}
           headerColumns={headerColumns()}
           rows={rows()}
