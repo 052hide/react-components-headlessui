@@ -7,6 +7,28 @@ const zIndexClassNames = {
   fixedHeader: 'z-20',
 }
 
+const formattedValue = (
+  value?: string | number | boolean,
+  format?: 'date' | 'datetime' | 'array'
+) => {
+  if (!format) {
+    return value
+  }
+
+  if (
+    (format === 'date' || format === 'datetime') &&
+    typeof value === 'number'
+  ) {
+    const date = new Date(value * 1000)
+    return (
+      date.toLocaleDateString('ja-JP') +
+      (format === 'datetime' ? ` ${date.toLocaleTimeString('ja-JP')}` : '')
+    )
+  }
+
+  return value
+}
+
 export const Component = (props: Props): JSX.Element => {
   const tableWidth = () => {
     return props.configColumns.reduce(
@@ -47,7 +69,10 @@ export const Component = (props: Props): JSX.Element => {
                   >
                     {props.headerColumns[configColumn.key].children
                       ? props.headerColumns[configColumn.key].children
-                      : props.headerColumns[configColumn.key].value}
+                      : formattedValue(
+                          props.headerColumns[configColumn.key].value,
+                          props.headerColumns[configColumn.key].format
+                        )}
                   </Column>
                 ))}
               </Row>
@@ -68,7 +93,10 @@ export const Component = (props: Props): JSX.Element => {
                     >
                       {row.columns[configColumn.key].children
                         ? row.columns[configColumn.key].children
-                        : row.columns[configColumn.key].value}
+                        : formattedValue(
+                            row.columns[configColumn.key].value,
+                            row.columns[configColumn.key].format
+                          )}
                     </Column>
                   ))}
                 </Row>

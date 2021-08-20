@@ -6,7 +6,7 @@ import Button from '~/components/style/Button'
 import DropdownMenu from '~/components/style/DropdownMenu'
 import SelectListbox from '~/components/style/SelectListbox'
 import Table from '~/components/headless/Table'
-import { Props as TableProps } from '~/components/headless/Table/type'
+import { Props as TableProps, Row } from '~/components/headless/Table/type'
 
 const configColumns = (): TableProps['configColumns'] => {
   return [
@@ -50,27 +50,29 @@ const headerColumns = (): TableProps['headerColumns'] => {
     col_1: { value: 'Column 1' },
     col_2: { value: 'Column 2' },
     col_3: { value: 'Column 3' },
-    col_4: { value: 'Column 4' },
-    col_5: { value: 'Column 5' },
+    col_4: { value: 'Date' },
+    col_5: { value: 'DateTIME' },
     col_6: { value: 'Column 6' },
     col_7: { value: 'Column 7' },
     col_8: { value: 'Column 8' },
     col_9: {
-      children: <p className="p-x border border-solid border-gray-300">Icon</p>,
+      children: (
+        <p className="p-x border border-solid border-gray-300">Action</p>
+      ),
     },
   }
 }
 
 const rows = (): TableProps['rows'] => {
-  const row = (index: number) => ({
+  const row = (index: number): Row => ({
     key: `row_${index}`,
     columns: {
       col_0: { value: `Row ${index} Column 0` },
       col_1: { value: `Row ${index} Column 1` },
       col_2: { value: `Row ${index} Column 2` },
       col_3: { value: `Row ${index} Column 3` },
-      col_4: { value: `Row ${index} Column 4` },
-      col_5: { value: `Row ${index} Column 5` },
+      col_4: { value: 1609471845, format: 'date' },
+      col_5: { value: 1609471845, format: 'datetime' },
       col_6: { value: `Row ${index} Column 6` },
       col_7: { value: `Row ${index} Column 7` },
       col_8: { value: `Row ${index} Column 8` },

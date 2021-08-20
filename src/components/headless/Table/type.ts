@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { RequireOne } from '~/types/common'
 
 type ColumnValue<
-  V extends string | number | boolean = string | number | boolean,
+  V extends string | number | boolean = string | number | boolean
 > = RequireOne<{
   children?: ReactNode
   value?: V
