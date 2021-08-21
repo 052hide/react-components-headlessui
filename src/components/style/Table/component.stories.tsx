@@ -32,13 +32,20 @@ export default {
     configColumns: {
       type: 'array',
     },
+    headerFixed: {
+      type: 'boolean',
+    },
     headerColumns: { type: 'object' },
     rows: { type: 'array' },
   },
 } as ComponentMeta<typeof Table>
 
 const Template: ComponentStory<typeof Table> = (args) => {
-  return <Table {...args} />
+  return (
+    <div style={{ height: '300px' }}>
+      <Table {...args} />
+    </div>
+  )
 }
 
 export const Default = Template.bind({})

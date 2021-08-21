@@ -53,7 +53,13 @@ export const Component = (props: Props): JSX.Element => {
                 />
               ))}
             </colgroup>
-            <thead className={`sticky top-0 ${zIndexClassNames.fixedHeader}`}>
+            <thead
+              className={
+                props.headerFixed
+                  ? `sticky top-0 ${zIndexClassNames.fixedHeader}`
+                  : ''
+              }
+            >
               <Row classNames={{ base: 'shadow' }}>
                 {props.configColumns.map((configColumn) => (
                   <Column

@@ -168,6 +168,7 @@ const App: React.FC = (): JSX.Element => {
       <div className="w-[800px] h-[300px] overflow-x-auto">
         <Table
           configColumns={configColumns()}
+          headerFixed={true}
           headerColumns={headerColumns()}
           rows={rows()}
         />

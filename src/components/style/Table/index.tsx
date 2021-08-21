@@ -42,6 +42,7 @@ const Component = (props: Props): JSX.Element => {
   return (
     <Table
       configColumns={props.configColumns}
+      headerFixed={props.headerFixed}
       headerColumns={headerColumns}
       rows={rows}
     />
@@ -49,13 +50,7 @@ const Component = (props: Props): JSX.Element => {
 }
 
 Component.defaultProps = {
-  htmlType: 'button',
-  disabled: false,
-  clickIntervalMillisecond: 200,
-  block: false,
-  loading: false,
-  theme: 'primary',
-  size: 'base',
+  headerFixed: false,
 }
 
 export default Component

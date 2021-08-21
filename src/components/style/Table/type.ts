@@ -15,6 +15,7 @@ export type Row = {
 
 export type Props = {
   configColumns: TableProps['configColumns']
+  headerFixed: TableProps['headerFixed']
   headerColumns: Columns
   rows: Row[]
 }

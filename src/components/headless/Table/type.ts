@@ -36,6 +36,7 @@ export type Props = {
       margin: number
     }
   }[]
+  headerFixed: boolean
   headerColumns: Columns
   rows: Row[]
 }
