@@ -42,7 +42,7 @@ export const Component = (props: Props): JSX.Element => {
       <div className="h-full">
         <div className="overflow-x-auto overflow-y-scroll max-h-full">
           <table
-            className="min-w-full table-fixed"
+            className="min-w-full table-fixed border-none"
             style={{ width: `${tableWidth()}px` }}
           >
             <colgroup>
@@ -53,8 +53,14 @@ export const Component = (props: Props): JSX.Element => {
                 />
               ))}
             </colgroup>
-            <thead className={`sticky top-0 ${zIndexClassNames.fixedHeader}`}>
-              <Row>
+            <thead
+              className={
+                props.headerFixed
+                  ? `sticky top-0 ${zIndexClassNames.fixedHeader}`
+                  : ''
+              }
+            >
+              <Row classNames={{ base: 'shadow' }}>
                 {props.configColumns.map((configColumn) => (
                   <Column
                     key={configColumn.key}
@@ -66,20 +72,30 @@ export const Component = (props: Props): JSX.Element => {
                         margin: configColumn.fixed.margin,
                       }
                     }
+                    classNames={
+                      props.headerColumns[configColumn.key].classNames
+                    }
                   >
-                    {props.headerColumns[configColumn.key].children
-                      ? props.headerColumns[configColumn.key].children
-                      : formattedValue(
-                          props.headerColumns[configColumn.key].value,
-                          props.headerColumns[configColumn.key].format
-                        )}
+                    {props.headerColumns[configColumn.key].children ||
+                      formattedValue(
+                        props.headerColumns[configColumn.key].value,
+                        props.headerColumns[configColumn.key].format
+                      )}
                   </Column>
                 ))}
               </Row>
             </thead>
             <tbody>
-              {props.rows.map((row) => (
-                <Row key={row.key} dataRowKey={row.key}>
+              {props.rows.map((row, i) => (
+                <Row
+                  key={row.key}
+                  dataRowKey={row.key}
+                  classNames={
+                    i !== 0
+                      ? { base: 'border-t border-solid border-gray-300' }
+                      : undefined
+                  }
+                >
                   {props.configColumns.map((configColumn) => (
                     <Column
                       key={configColumn.key}
@@ -90,13 +106,13 @@ export const Component = (props: Props): JSX.Element => {
                           margin: configColumn.fixed.margin,
                         }
                       }
+                      classNames={row.columns[configColumn.key].classNames}
                     >
-                      {row.columns[configColumn.key].children
-                        ? row.columns[configColumn.key].children
-                        : formattedValue(
-                            row.columns[configColumn.key].value,
-                            row.columns[configColumn.key].format
-                          )}
+                      {row.columns[configColumn.key].children ||
+                        formattedValue(
+                          row.columns[configColumn.key].value,
+                          row.columns[configColumn.key].format
+                        )}
                     </Column>
                   ))}
                 </Row>

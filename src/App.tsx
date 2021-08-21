@@ -5,7 +5,7 @@ import type { Props as SelectListboxProps } from '~/components/style/SelectListb
 import Button from '~/components/style/Button'
 import DropdownMenu from '~/components/style/DropdownMenu'
 import SelectListbox from '~/components/style/SelectListbox'
-import Table from '~/components/headless/Table'
+import Table from '~/components/style/Table'
 import { Props as TableProps, Row } from '~/components/headless/Table/type'
 
 const configColumns = (): TableProps['configColumns'] => {
@@ -165,9 +165,10 @@ const App: React.FC = (): JSX.Element => {
           items={selectItems}
         />
       </div>
-      <div className="w-[800px] h-[100px] overflow-x-auto">
+      <div className="w-[800px] h-[300px] overflow-x-auto">
         <Table
           configColumns={configColumns()}
+          headerFixed={true}
           headerColumns={headerColumns()}
           rows={rows()}
         />

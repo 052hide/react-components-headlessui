@@ -7,7 +7,7 @@ export const Component = (props: PropsWithChildren<Props>): JSX.Element => {
   return (
     <HtmlTagName
       data-col-key={props.dataColKey}
-      className={`${props.isHeader ? 'bg-gray-50' : 'bg-white'} ${
+      className={`${props.classNames?.base || 'm-0 p-0'} ${
         props.fixed?.position && 'sticky'
       }`}
       style={{

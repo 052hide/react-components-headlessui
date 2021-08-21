@@ -13,9 +13,12 @@ export type Column<
   F extends 'date' | 'datetime' | 'array' = 'date' | 'datetime' | 'array'
 > = ColumnValue<V> & {
   format?: F
+  classNames?: {
+    base: string
+  }
 }
 
-type Columns = {
+export type Columns = {
   [key: string]: Column
 }
 
@@ -33,6 +36,7 @@ export type Props = {
       margin: number
     }
   }[]
+  headerFixed: boolean
   headerColumns: Columns
   rows: Row[]
 }
