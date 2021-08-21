@@ -5,4 +5,7 @@ export type Props = {
     margin: number
   }
   isHeader: boolean
+  classNames?: {
+    base?: string
+  }
 }
