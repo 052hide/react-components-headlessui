@@ -80,7 +80,7 @@
     "prettier": "^2.3.2",
     "react-app-rewire-alias": "^1.0.3",
     "react-app-rewired": "^2.1.8",
-    "tailwindcss": "^2.2.8"
+    "tailwindcss": "^2.2.11"
   },
   "resolutions": {
     "babel-loader": "8.1.0"
